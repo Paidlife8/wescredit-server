@@ -127,8 +127,8 @@ const CreateUser = async (req, res) => {
 
 const Login = async (req, res) => {
   try {
-    const { email, password } = req.body;
-    const userExists = await UserSchema.findOne({ email: email });
+    const { accountNo, password } = req.body;
+    const userExists = await UserSchema.findOne({ accountNo: accountNo });
     console.log("dllsdklsdlkl");
     if (userExists) {
       // console.log("user exists", userExists);
