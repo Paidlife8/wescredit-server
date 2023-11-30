@@ -90,6 +90,10 @@ const GenerateOpt = async () => {
   return otp;
 };
 
+const GenerateSixRandomDigits = () => {
+  const otp = crypto.randomInt(100000, 1000000); // Generates a number between 100000 (inclusive) and 1000000 (exclusive)
+  return otp;
+};
 const sendEmail = async (email, subject, text) => {
   try {
     const transporter = nodemailer.createTransport({
@@ -134,4 +138,5 @@ module.exports = {
   IsAdmin,
   sendEmail,
   TrimMyDate,
+  GenerateSixRandomDigits,
 };

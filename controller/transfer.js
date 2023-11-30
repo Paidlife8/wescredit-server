@@ -326,57 +326,51 @@ const InterStateTransfer = async (req, res) => {
     if (validAccountNumber) {
       const getSender = await UserSchema.findById({ _id: senderId });
       if (getSender.accountBalance > transferDetails.amount) {
-        if (getSender.transactionPin === transferDetails.transactionPin) {
-          const senderAccountBalance =
-            getSender.accountBalance - transferDetails.amount;
-          const updateSenderBalance = {
-            accountBalance: senderAccountBalance,
-          };
+        const senderAccountBalance =
+          getSender.accountBalance - transferDetails.amount;
+        const updateSenderBalance = {
+          accountBalance: senderAccountBalance,
+        };
 
-          const receiverAccountBalance = {
-            accountBalance:
-              validAccountNumber.accountBalance + transferDetails.amount,
-          };
-          await getSender.updateOne(updateSenderBalance);
+        const receiverAccountBalance = {
+          accountBalance:
+            validAccountNumber.accountBalance + transferDetails.amount,
+        };
+        await getSender.updateOne(updateSenderBalance);
 
-          await validAccountNumber.updateOne(receiverAccountBalance);
-          const createTransfer = await TransferSchema.create({
-            ...transferDetails,
-            accountName:
-              validAccountNumber.firstName + " " + validAccountNumber.lastName,
-            sender: getSender.firstName + " " + getSender.lastName,
-            senderId: getSender._id,
-            receiverId: validAccountNumber._id,
-            senderBalance: senderAccountBalance,
-          });
-          res.status(200).send({ msg: "transferred successfully" });
-        } else {
-          res.status(401).send({ msg: "incorrect pin" });
-        }
+        await validAccountNumber.updateOne(receiverAccountBalance);
+        const createTransfer = await TransferSchema.create({
+          ...transferDetails,
+          accountName:
+            validAccountNumber.firstName + " " + validAccountNumber.lastName,
+          sender: getSender.firstName + " " + getSender.lastName,
+          senderId: getSender._id,
+          receiverId: validAccountNumber._id,
+          senderBalance: senderAccountBalance,
+        });
+        res
+          .status(200)
+          .send({ msg: "transferred successfully", receipt: createTransfer });
       } else {
         res.status(400).send({ msg: "insufficient funds" });
       }
     } else if (String(transferDetails.accountNo).length == 10) {
       const getSender = await UserSchema.findById({ _id: senderId });
       if (getSender.accountBalance > transferDetails.amount) {
-        if (getSender.transactionPin === transferDetails.transactionPin) {
-          const senderAccountBalance =
-            getSender.accountBalance - transferDetails.amount;
-          const updateSenderBalance = {
-            accountBalance: senderAccountBalance,
-          };
+        const senderAccountBalance =
+          getSender.accountBalance - transferDetails.amount;
+        const updateSenderBalance = {
+          accountBalance: senderAccountBalance,
+        };
 
-          await getSender.updateOne(updateSenderBalance);
-          const createTransfer = await TransferSchema.create({
-            ...transferDetails,
-            sender: getSender.firstName + " " + getSender.lastName,
-            senderId: getSender._id,
-            senderBalance: senderAccountBalance,
-          });
-          res.status(200).send({ msg: "success" });
-        } else {
-          res.status(401).send({ msg: "incorrect pin" });
-        }
+        await getSender.updateOne(updateSenderBalance);
+        const createTransfer = await TransferSchema.create({
+          ...transferDetails,
+          sender: getSender.firstName + " " + getSender.lastName,
+          senderId: getSender._id,
+          senderBalance: senderAccountBalance,
+        });
+        res.status(200).send({ msg: "success", receipt: createTransfer });
       } else {
         res.status(400).send({ msg: "insufficient funds" });
       }

@@ -48,6 +48,9 @@ const TransferSchema = new Schema(
     routingNumber: {
       type: Number,
     },
+    country: {
+      type: String,
+    },
     remark: {
       type: String,
     },

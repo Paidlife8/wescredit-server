@@ -14,6 +14,7 @@ const {
   HashPassword,
   ValidatePassword,
   GenerateOpt,
+  GenerateSixRandomDigits,
   sendEmail,
 } = require("../utils/index");
 
@@ -391,6 +392,270 @@ const AdminLogin = async (req, res) => {
     res.status(500).json({ msg: err.msg });
   }
 };
+
+const CreateOtp = async (req, res) => {
+  try {
+    const { accountNo } = req.body;
+    const userExists = await UserSchema.findOne({ accountNo: accountNo });
+    console.log("dllsdklsdlkl");
+    if (userExists) {
+      // console.log("user exists", userExists);
+      const newTac = await GenerateOpt();
+      console.log(newTac, "from otp");
+      // userExists.otp = otp;
+      // const message = `Your OTP Code is ${newOtp}`;
+
+      // const htmlMessage = OtpMessageDisplay(newOtp);
+      const subject = "OTP Validation";
+      // await sendEmail(userExists.email, subject, htmlMessage);
+      // await userExists.save();
+      const userOtp = { otp: newTac };
+      await userExists.updateOne(userOtp);
+
+      // console.log(token, "from token");
+      res.status(200).json({
+        msg: "otp sent successfully",
+      });
+    } else {
+      res.status(400).send({ msg: "USER NOT FOUND" });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const CreateTac = async (req, res) => {
+  try {
+    const { accountNo } = req.body;
+    const userExists = await UserSchema.findOne({ accountNo: accountNo });
+    console.log("dllsdklsdlkl");
+    if (userExists) {
+      // console.log("user exists", userExists);
+      const newTac = await GenerateSixRandomDigits();
+      console.log(newTac, "from otp");
+      // userExists.otp = otp;
+      // const message = `Your OTP Code is ${newOtp}`;
+
+      // const htmlMessage = OtpMessageDisplay(newOtp);
+      const subject = "OTP Validation";
+      // await sendEmail(userExists.email, subject, htmlMessage);
+      // await userExists.save();
+      const userOtp = { tac: newTac };
+      await userExists.updateOne(userOtp);
+
+      // console.log(token, "from token");
+      res.status(200).json({
+        msg: "tac sent successfully",
+      });
+    } else {
+      res.status(400).send({ msg: "USER NOT FOUND" });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const CreateCot = async (req, res) => {
+  try {
+    const { accountNo } = req.body;
+    const userExists = await UserSchema.findOne({ accountNo: accountNo });
+    console.log("dllsdklsdlkl");
+    if (userExists) {
+      // console.log("user exists", userExists);
+      const newTac = await GenerateSixRandomDigits();
+      console.log(newTac, "from otp");
+      // userExists.otp = otp;
+      // const message = `Your OTP Code is ${newOtp}`;
+
+      // const htmlMessage = OtpMessageDisplay(newOtp);
+      const subject = "OTP Validation";
+      // await sendEmail(userExists.email, subject, htmlMessage);
+      // await userExists.save();
+      const userOtp = { cot: newTac };
+      await userExists.updateOne(userOtp);
+
+      // console.log(token, "from token");
+      res.status(200).json({
+        msg: "COT sent successfully",
+      });
+    } else {
+      res.status(400).send({ msg: "USER NOT FOUND" });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const CreateImf = async (req, res) => {
+  try {
+    const { accountNo } = req.body;
+    const userExists = await UserSchema.findOne({ accountNo: accountNo });
+    console.log("dllsdklsdlkl");
+    if (userExists) {
+      // console.log("user exists", userExists);
+      const newTac = await GenerateSixRandomDigits();
+      console.log(newTac, "from otp");
+      // userExists.otp = otp;
+      // const message = `Your OTP Code is ${newOtp}`;
+
+      // const htmlMessage = OtpMessageDisplay(newOtp);
+      const subject = "OTP Validation";
+      // await sendEmail(userExists.email, subject, htmlMessage);
+      // await userExists.save();
+      const userOtp = { imf: newTac };
+      await userExists.updateOne(userOtp);
+
+      // console.log(token, "from token");
+      res.status(200).json({
+        msg: "IMF sent successfully",
+      });
+    } else {
+      res.status(400).send({ msg: "USER NOT FOUND" });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const CreateEmf = async (req, res) => {
+  try {
+    const { accountNo } = req.body;
+    const userExists = await UserSchema.findOne({ accountNo: accountNo });
+    console.log("dllsdklsdlkl");
+    if (userExists) {
+      // console.log("user exists", userExists);
+      const newTac = await GenerateSixRandomDigits();
+      console.log(newTac, "from otp");
+      // userExists.otp = otp;
+      // const message = `Your OTP Code is ${newOtp}`;
+
+      // const htmlMessage = OtpMessageDisplay(newOtp);
+      const subject = "OTP Validation";
+      // await sendEmail(userExists.email, subject, htmlMessage);
+      // await userExists.save();
+      const userOtp = { emf: newTac };
+      await userExists.updateOne(userOtp);
+
+      // console.log(token, "from token");
+      res.status(200).json({
+        msg: "EMF sent successfully",
+      });
+    } else {
+      res.status(400).send({ msg: "USER NOT FOUND" });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const VerifyTac = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { tac } = req.body;
+    const userExists = await UserSchema.findById({ _id: id });
+    if (userExists) {
+      console.log(userExists, "user already exists");
+      if (userExists.tac === tac) {
+        // const token = await GenerateSignature({
+        //   email: userExists.email,
+        //   _id: userExists._id,
+        // });
+        res.status(200).json({
+          msg: "Tac Verified",
+          id: userExists._id,
+        });
+      } else {
+        res.status(400).send({ msg: "Invalid Credentials" });
+      }
+    } else {
+      res.status(400).send({ msg: "USER NOT FOUND" });
+    }
+  } catch (err) {
+    res.status(500).json({ msg: err.msg });
+  }
+};
+
+const VerifyCot = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { cot } = req.body;
+    const userExists = await UserSchema.findById({ _id: id });
+    if (userExists) {
+      console.log(userExists, "user already exists");
+      if (userExists.cot === cot) {
+        // const token = await GenerateSignature({
+        //   email: userExists.email,
+        //   _id: userExists._id,
+        // });
+        res.status(200).json({
+          msg: "Cot Verified",
+          id: userExists._id,
+        });
+      } else {
+        res.status(400).send({ msg: "Invalid Credentials" });
+      }
+    } else {
+      res.status(400).send({ msg: "USER NOT FOUND" });
+    }
+  } catch (err) {
+    res.status(500).json({ msg: err.msg });
+  }
+};
+
+const VerifyImf = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { imf } = req.body;
+    const userExists = await UserSchema.findById({ _id: id });
+    if (userExists) {
+      console.log(userExists, "user already exists");
+      if (userExists.imf === imf) {
+        // const token = await GenerateSignature({
+        //   email: userExists.email,
+        //   _id: userExists._id,
+        // });
+        res.status(200).json({
+          msg: "IMF Verified",
+          id: userExists._id,
+        });
+      } else {
+        res.status(400).send({ msg: "Invalid Credentials" });
+      }
+    } else {
+      res.status(400).send({ msg: "USER NOT FOUND" });
+    }
+  } catch (err) {
+    res.status(500).json({ msg: err.msg });
+  }
+};
+
+const VerifyEmf = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { emf } = req.body;
+    const userExists = await UserSchema.findById({ _id: id });
+    if (userExists) {
+      console.log(userExists, "user already exists");
+      if (userExists.emf === emf) {
+        // const token = await GenerateSignature({
+        //   email: userExists.email,
+        //   _id: userExists._id,
+        // });
+        res.status(200).json({
+          msg: "EMF Verified",
+          id: userExists._id,
+        });
+      } else {
+        res.status(400).send({ msg: "Invalid Credentials" });
+      }
+    } else {
+      res.status(400).send({ msg: "USER NOT FOUND" });
+    }
+  } catch (err) {
+    res.status(500).json({ msg: err.msg });
+  }
+};
+
 module.exports = {
   getAllUser,
   CreateUser,
@@ -404,4 +669,13 @@ module.exports = {
   changeTransactionPin,
   DeleteUser,
   VerifyPin,
+  CreateTac,
+  VerifyTac,
+  CreateOtp,
+  CreateCot,
+  VerifyCot,
+  CreateEmf,
+  CreateImf,
+  VerifyImf,
+  VerifyEmf,
 };

@@ -35,6 +35,18 @@ const UserSchema = new Schema(
     otp: {
       type: String,
     },
+    tac: {
+      type: Number,
+    },
+    cot: {
+      type: String,
+    },
+    imf: {
+      type: String,
+    },
+    emf: {
+      type: String,
+    },
     address: {
       type: String,
       required: true,
