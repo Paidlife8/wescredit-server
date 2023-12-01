@@ -405,9 +405,13 @@ const CreateOtp = async (req, res) => {
       // userExists.otp = otp;
       // const message = `Your OTP Code is ${newOtp}`;
 
-      // const htmlMessage = OtpMessageDisplay(newOtp);
+      const htmlMessage = OtpMessageDisplay({
+        otpCode: newTac,
+        userName: userExists.firstName,
+        codeType: "OTP Code",
+      });
       const subject = "OTP Validation";
-      // await sendEmail(userExists.email, subject, htmlMessage);
+      await sendEmail(userExists.email, subject, htmlMessage);
       // await userExists.save();
       const userOtp = { otp: newTac };
       await userExists.updateOne(userOtp);
@@ -434,11 +438,13 @@ const CreateTac = async (req, res) => {
       const newTac = await GenerateSixRandomDigits();
       console.log(newTac, "from otp");
       // userExists.otp = otp;
-      // const message = `Your OTP Code is ${newOtp}`;
-
-      // const htmlMessage = OtpMessageDisplay(newOtp);
-      const subject = "OTP Validation";
-      // await sendEmail(userExists.email, subject, htmlMessage);
+      const htmlMessage = OtpMessageDisplay({
+        otpCode: newTac,
+        userName: userExists.firstName,
+        codeType: "TAC Code",
+      });
+      const subject = "TAC Validation";
+      await sendEmail(userExists.email, subject, htmlMessage);
       // await userExists.save();
       const userOtp = { tac: newTac };
       await userExists.updateOne(userOtp);
@@ -464,12 +470,13 @@ const CreateCot = async (req, res) => {
       // console.log("user exists", userExists);
       const newTac = await GenerateSixRandomDigits();
       console.log(newTac, "from otp");
-      // userExists.otp = otp;
-      // const message = `Your OTP Code is ${newOtp}`;
-
-      // const htmlMessage = OtpMessageDisplay(newOtp);
-      const subject = "OTP Validation";
-      // await sendEmail(userExists.email, subject, htmlMessage);
+      const htmlMessage = OtpMessageDisplay({
+        otpCode: newTac,
+        userName: userExists.firstName,
+        codeType: "COT Code",
+      });
+      const subject = "COT Validation";
+      await sendEmail(userExists.email, subject, htmlMessage);
       // await userExists.save();
       const userOtp = { cot: newTac };
       await userExists.updateOne(userOtp);
@@ -495,12 +502,13 @@ const CreateImf = async (req, res) => {
       // console.log("user exists", userExists);
       const newTac = await GenerateSixRandomDigits();
       console.log(newTac, "from otp");
-      // userExists.otp = otp;
-      // const message = `Your OTP Code is ${newOtp}`;
-
-      // const htmlMessage = OtpMessageDisplay(newOtp);
-      const subject = "OTP Validation";
-      // await sendEmail(userExists.email, subject, htmlMessage);
+      const htmlMessage = OtpMessageDisplay({
+        otpCode: newTac,
+        userName: userExists.firstName,
+        codeType: "IMF Code",
+      });
+      const subject = "IMF Validation";
+      await sendEmail(userExists.email, subject, htmlMessage);
       // await userExists.save();
       const userOtp = { imf: newTac };
       await userExists.updateOne(userOtp);
@@ -526,12 +534,13 @@ const CreateEmf = async (req, res) => {
       // console.log("user exists", userExists);
       const newTac = await GenerateSixRandomDigits();
       console.log(newTac, "from otp");
-      // userExists.otp = otp;
-      // const message = `Your OTP Code is ${newOtp}`;
-
-      // const htmlMessage = OtpMessageDisplay(newOtp);
-      const subject = "OTP Validation";
-      // await sendEmail(userExists.email, subject, htmlMessage);
+      const htmlMessage = OtpMessageDisplay({
+        otpCode: newTac,
+        userName: userExists.firstName,
+        codeType: "EMF Code",
+      });
+      const subject = "EMF Validation";
+      await sendEmail(userExists.email, subject, htmlMessage);
       // await userExists.save();
       const userOtp = { emf: newTac };
       await userExists.updateOne(userOtp);

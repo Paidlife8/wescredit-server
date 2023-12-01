@@ -8,6 +8,8 @@ dotenv.config();
 
 const APP_SECRET = process.env.APP_SECRET;
 const ADMIN_APP_SECRET = process.env.ADMIN_APP_SECRET;
+const EMAIL = process.env.USER_EMAIL;
+const APP_PASSWORD = process.env.APP_PASSWORD;
 const GenerateSalt = async () => {
   return await bcrypt.genSalt();
 };
@@ -100,8 +102,8 @@ const sendEmail = async (email, subject, text) => {
       service: "Gmail",
       secure: true,
       auth: {
-        user: "regionmailbox@gmail.com",
-        pass: "pqcmfmussbchrakj",
+        user: EMAIL,
+        pass: APP_PASSWORD,
       },
     });
 
