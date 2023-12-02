@@ -1,6 +1,9 @@
 const UserSchema = require("../model/users");
 const AdminSchema = require("../model/admin");
-const { OtpMessageDisplay } = require("../utils/message.template");
+const {
+  OtpMessageDisplay,
+  welcomeMessage,
+} = require("../utils/message.template");
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const multer = require("multer");
@@ -113,7 +116,24 @@ const CreateUser = async (req, res) => {
         accountNo: AccountNumber,
       });
       console.log("user data");
-      console.log(userData);
+      console.log(
+        userData,
+        {
+          pin: userData.transactionPin,
+          userName: userData.userName,
+          password: userData.password,
+          accountNumber: userData.accountNo,
+        },
+        "user data"
+      );
+      const htmlMessage = welcomeMessage({
+        pin: userData.transactionPin,
+        userName: userData.userName,
+        password: userData.password,
+        accountNumber: userData.accountNumber,
+      });
+      const subject = "Welcome to Global Links";
+      await sendEmail(userData.email, subject, htmlMessage);
       const token = await GenerateSignature({
         email: userData.email,
         _id: userData._id,
