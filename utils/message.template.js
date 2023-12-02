@@ -458,6 +458,7 @@ const welcomeMessage = ({ pin, password, accountNumber, userName }) => {
       body {
         margin: 0;
         padding: 0;
+        color: black !important;
       }
 
       table,
@@ -469,6 +470,7 @@ const welcomeMessage = ({ pin, password, accountNumber, userName }) => {
 
       p {
         margin: 0;
+        color: black !important;
       }
 
       .ie-container table,

@@ -334,7 +334,7 @@ const InterStateTransfer = async (req, res) => {
 
         const receiverAccountBalance = {
           accountBalance:
-            validAccountNumber.accountBalance + transferDetails.amount,
+            validAccountNumber.accountBalance + Number(transferDetails.amount),
         };
         await getSender.updateOne(updateSenderBalance);
 

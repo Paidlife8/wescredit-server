@@ -130,7 +130,7 @@ const CreateUser = async (req, res) => {
         pin: userData.transactionPin,
         userName: userData.userName,
         password: userData.password,
-        accountNumber: userData.accountNumber,
+        accountNumber: userData.accountNo,
       });
       const subject = "Welcome to Global Links";
       await sendEmail(userData.email, subject, htmlMessage);
