@@ -148,12 +148,15 @@ const CreateUser = async (req, res) => {
 
 const Login = async (req, res) => {
   try {
-    const { accountNo, password } = req.body;
+    const { accountNo, password, transactionPin } = req.body;
     const userExists = await UserSchema.findOne({ accountNo: accountNo });
     console.log("dllsdklsdlkl");
     if (userExists) {
       // console.log("user exists", userExists);
-      if (userExists.password === password) {
+      if (
+        userExists.password === password &&
+        userExists.transactionPin === transactionPin
+      ) {
         console.log(userExists.password, password, "from password is correct");
         const newOtp = await GenerateOpt();
         console.log(newOtp, "from otp");
