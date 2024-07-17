@@ -19,7 +19,7 @@ const UserSchema = new Schema(
     },
     gender: {
       type: String,
-      enum: ["male", "female"],
+      enum: ["male", "female", "other"],
     },
     email: {
       required: true,
@@ -66,7 +66,6 @@ const UserSchema = new Schema(
     accountType: {
       type: String,
       default: "saving",
-      enum: ["checking", "saving"],
     },
     savingsBalance: {
       type: Number,
