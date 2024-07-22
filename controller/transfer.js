@@ -381,6 +381,7 @@ const InterStateTransfer = async (req, res) => {
     res.status(500).send(err.msg);
   }
 };
+
 const GetAccountNo = async (req, res) => {
   try {
     const accountNo = req.params.accountNo;
