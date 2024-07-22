@@ -20,8 +20,8 @@ app.get("/", (req, res) => {
 app.use("/user", UserRouter);
 app.use("/product", ProductRouter);
 app.use("/transfer", TransferRouter);
-app.use('/uploads', express.static('uploads'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use("/uploads", express.static("uploads"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 
