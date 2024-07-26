@@ -1,5 +1,5 @@
 const OtpMessageDisplay = ({ otpCode, userName, codeType }) => {
-  const otpMessage = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  const otpMessage = `<!DOCTYPE html PUBLIC>
 <html
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:v="urn:schemas-microsoft-com:vml"
@@ -312,8 +312,8 @@ const OtpMessageDisplay = ({ otpCode, userName, codeType }) => {
                                     <span style="line-height: 23.8px"
                                       ><br />Please reach out to us if you have
                                       any complain at
-                                      <a href="https://bank-paylio.vercel.app/help-center"
-                                        >Elite Trust Finance Help Center</a
+                                      <a href="mailto:elitetrustfinance1@gmail.com"
+                                        >elitetrustfinance1@gmail.com</a
                                       >. We’d love to hear from you!</span
                                     >
                                   </p>
@@ -350,7 +350,7 @@ const OtpMessageDisplay = ({ otpCode, userName, codeType }) => {
 
 const welcomeMessage = ({ pin, password, accountNumber, userName }) => {
   const message = `
-  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <!DOCTYPE html PUBLIC >
 <html
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:v="urn:schemas-microsoft-com:vml"
@@ -688,8 +688,8 @@ const welcomeMessage = ({ pin, password, accountNumber, userName }) => {
                                       ><br />Please reach out to us if you have
                                       any complain at
                                       <a
-                                        href="https://bank-paylio.vercel.app/login"
-                                        >Login here</a
+                                        href="mailto:elitetrustfinance1@gmail.com"
+                                        >Contact us</a
                                       >. We’d love to hear from you!</span
                                     >
                                   </p>
