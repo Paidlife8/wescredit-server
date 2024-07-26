@@ -428,6 +428,22 @@ const EnableTransfer = async (req, res) => {
   }
 };
 
+const ChangeUserAccountStatus = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { accountStatus } = req.body;
+    const enableTransfer = { accountStatus: accountStatus };
+    const findAndUpdate = await UserSchema.findByIdAndUpdate(
+      { _id: id },
+      enableTransfer
+    );
+    console.log(findAndUpdate);
+    res.status(200).send({ msg: "Transfer Disabled", account: findAndUpdate });
+  } catch (err) {
+    res.status(500).send(err.msg);
+  }
+};
+
 const AdminCreditUser = async (req, res) => {
   try {
     const transferDetails = req.body;
@@ -504,4 +520,5 @@ module.exports = {
   GetUserTransactions,
   GetAccountNo,
   InterStateTransfer,
+  ChangeUserAccountStatus,
 };

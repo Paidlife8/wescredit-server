@@ -719,8 +719,6 @@ const welcomeMessage = ({ pin, password, accountNumber, userName }) => {
     <!--[if IE]></div><![endif]-->
   </body>
 </html>
-
-
   `;
 
   return message;

@@ -9,6 +9,7 @@ const {
   GetUserTransactions,
   GetAccountNo,
   InterStateTransfer,
+  ChangeUserAccountStatus,
 } = require("../controller/transfer");
 const { IsAuthenticated, IsAdmin } = require("../utils");
 // const { isAuthenticated } = require("../utils/index");
@@ -23,6 +24,9 @@ router
 router.route("/get-account/:accountNo").get(IsAuthenticated, GetAccountNo);
 router.route("/all-transactions").get(IsAdmin, GetTransactions);
 router.route("/admin-credit").post(IsAdmin, AdminCreditUser);
+router
+  .route("/admin-change-user-status")
+  .post(IsAdmin, ChangeUserAccountStatus);
 router.route("/admin-debit").post(IsAdmin, AdminDebitUser);
 router.route("/disable-transfer/:id").patch(IsAdmin, DisableTransfer);
 router.route("/enable-transfer/:id").patch(IsAdmin, EnableTransfer);
