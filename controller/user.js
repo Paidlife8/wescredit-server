@@ -288,6 +288,8 @@ const EditUser = async (req, res) => {
       savingsBalance,
       transactionPin,
       address,
+      accountBalance,
+      accountStatus,
     } = req.body;
     const userExists = await UserSchema.findOne({ email: email });
     if (userExists) {
@@ -309,8 +311,32 @@ const EditUser = async (req, res) => {
       address
         ? (userExists.address = address)
         : (userExists.address = userExists.address);
+      accountBalance
+        ? (userExists.accountBalance = accountBalance)
+        : (userExists.accountBalance = userExists.accountBalance);
+      accountStatus
+        ? (userExists.accountStatus = accountStatus)
+        : (userExists.accountStatus = userExists.accountStatus);
       userExists.save();
-      res.status(200).json("password updated");
+      res.status(200).json("updated");
+    } else {
+      res.status(400).send({ msg: "USER NOT FOUND" });
+    }
+  } catch (err) {
+    res.status(500).json({ msg: err.msg });
+  }
+};
+
+const UpdateAccountStatus = async (req, res) => {
+  try {
+    const { accountStatus, email } = req.body;
+    const userExists = await UserSchema.findOne({ email: email });
+    if (userExists) {
+      accountStatus
+        ? (userExists.accountStatus = accountStatus)
+        : (userExists.accountStatus = userExists.accountStatus);
+      userExists.save();
+      res.status(200).json("updated");
     } else {
       res.status(400).send({ msg: "USER NOT FOUND" });
     }
@@ -718,4 +744,6 @@ module.exports = {
   CreateImf,
   VerifyImf,
   VerifyEmf,
+  EditUser,
+  UpdateAccountStatus,
 };

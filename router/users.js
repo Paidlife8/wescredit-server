@@ -20,11 +20,14 @@ const {
   CreateImf,
   VerifyImf,
   VerifyEmf,
+  UpdateAccountStatus,
+  EditUser,
 } = require("../controller/user");
 const router = express.Router();
 
 router.route("/").get(getAllUser);
 router.route("/getUser/:id").get(GetUser);
+router.route("/edit-profile").patch(EditUser);
 router.route("/register").post(CreateUser);
 router.route("/login").post(Login);
 router.route("/verify-pin").post(VerifyPin);
@@ -43,5 +46,6 @@ router.route("/change-transaction-pin/:id").patch(changeTransactionPin);
 router.route("/add-profile-pics/:id").patch(uploadProfilePics);
 router.route("/admin-login").post(AdminLogin);
 router.route("/create-admin").post(CreateAdmin);
+router.route("/update-account-status").patch(UpdateAccountStatus);
 
 module.exports = router;

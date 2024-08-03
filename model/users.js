@@ -89,7 +89,7 @@ const UserSchema = new Schema(
     accountStatus: {
       type: String,
       default: "active",
-      enum: ["active", "wrong location", "blocked"],
+      // enum: ["active", "wrong location", "blocked"],
     },
     zipcode: {
       type: Number,
