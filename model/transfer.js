@@ -4,8 +4,8 @@ const TransferSchema = new Schema(
   {
     senderId: {
       type: ObjectID,
-      required: true,
-      ref: "User",
+      // required: true,
+      // ref: "User",
     },
     sender: {
       type: String,
@@ -56,7 +56,7 @@ const TransferSchema = new Schema(
     },
     senderBalance: {
       type: Number,
-      required: true,
+      // required: true,
     },
     ibanNumber: {
       type: Number,

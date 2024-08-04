@@ -447,19 +447,24 @@ const ChangeUserAccountStatus = async (req, res) => {
 const AdminCreditUser = async (req, res) => {
   try {
     const transferDetails = req.body;
+    // console.log(transferDetails, "transferDetails");
     const validAccountNumber = await UserSchema.findOne({
       accountNo: transferDetails.accountNo,
     });
+
     if (validAccountNumber) {
+      console.log(validAccountNumber, "accountNumber");
       const createTransfer = await TransferSchema.create({
         ...transferDetails,
-        accountName: validAccountNumber.fullName,
+        accountName: `${validAccountNumber.firstName} ${validAccountNumber.lastName}`,
+        receiverId: validAccountNumber._id,
       });
+      console.log(createTransfer, "create transfer");
       const newAccountBalance =
         createTransfer.amount + validAccountNumber.accountBalance;
       const updateAccountBalance = { accountBalance: newAccountBalance };
       await validAccountNumber.updateOne(updateAccountBalance);
-      res.status(204).send({ msg: "account credited successfully" });
+      res.status(204).json({ msg: "account credited successfully" });
     } else {
       res.status(404).send({ msg: "invalid account number" });
     }
