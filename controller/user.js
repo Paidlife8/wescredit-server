@@ -39,22 +39,40 @@ cloudinary.config({
 });
 const upload = multer({ storage: storage }).single("image");
 
-async function uploadToCloudinary(locaFilePath) {
+async function uploadToCloudinary(data) {
   var mainFolderName = "region-bank";
-  var filePathOnCloudinary = mainFolderName + "/" + locaFilePath;
-  return cloudinary.uploader
-    .upload(locaFilePath)
+  // var filePathOnCloudinary = mainFolderName + "/" + locaFilePath;
+  // return cloudinary.uploader
+  //   .upload(locaFilePath)
+  //   .then((result) => {
+  //     fs.unlinkSync(locaFilePath);
+  //     return {
+  //       message: "Success",
+  //       url: result.url,
+  //     };
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //     fs.unlinkSync(locaFilePath);
+  //     return { message: "Fail" };
+  //   });
+  // let filePathOnCloudinary = mainFolderName + "/" + data;
+  const uploadCheck = await cloudinary.uploader
+    .upload(data, {
+      folder: "global-link",
+    })
     .then((result) => {
-      fs.unlinkSync(locaFilePath);
+      fs.unlinkSync(data);
       return {
-        message: "Success",
+        message: "success",
         url: result.url,
       };
     })
     .catch((error) => {
-      fs.unlinkSync(locaFilePath);
-      return { message: "Fail" };
+      fs.unlinkSync(data);
+      return { message: "fail" };
     });
+  return uploadCheck;
 }
 
 const getAllUser = async (req, res) => {
@@ -74,6 +92,7 @@ const uploadProfilePics = async (req, res) => {
     } else {
       if (req.file) {
         var locaFilePath = req.file.path;
+        console.log(locaFilePath);
         var result = await uploadToCloudinary(locaFilePath);
         console.log(result);
         try {
