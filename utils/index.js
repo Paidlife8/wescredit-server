@@ -108,7 +108,7 @@ const sendEmail = async (email, subject, text) => {
     });
 
     const sentMailResponse = await transporter.sendMail({
-      from: "Elite Trust Finance",
+      from: "info@elitetrustfinance.online",
       to: email,
       subject: subject,
       html: text,
