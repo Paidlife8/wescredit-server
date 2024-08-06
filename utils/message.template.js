@@ -243,6 +243,13 @@ const OtpMessageDisplay = ({ otpCode, userName, codeType }) => {
                                 align="left"
                               >
                                 <!--[if mso]><table width="100%"><tr><td><![endif]-->
+                                 <div>
+                                  <img
+                                    style="width: 90%; margin-bottom: 2rem"
+                                    src="https://res.cloudinary.com/dcbbywfud/image/upload/v1722941248/elite-trust-logo-3_gs2rmn.png"
+                                    alt=""
+                                  />
+                                </div>
                                 <h1
                                   class="v-text-align"
                                   style="
@@ -350,7 +357,7 @@ const OtpMessageDisplay = ({ otpCode, userName, codeType }) => {
 
 const welcomeMessage = ({ pin, password, accountNumber, userName }) => {
   const message = `
-  <!DOCTYPE html PUBLIC >
+ <!DOCTYPE html PUBLIC>
 <html
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:v="urn:schemas-microsoft-com:vml"
@@ -593,6 +600,13 @@ const welcomeMessage = ({ pin, password, accountNumber, userName }) => {
                                 "
                                 align="left"
                               >
+                                <div>
+                                  <img
+                                    style="width: 90%; margin-bottom: 2rem"
+                                    src="https://res.cloudinary.com/dcbbywfud/image/upload/v1722941248/elite-trust-logo-3_gs2rmn.png"
+                                    alt=""
+                                  />
+                                </div>
                                 <!--[if mso]><table width="100%"><tr><td><![endif]-->
                                 <h1
                                   class="v-text-align"
@@ -609,7 +623,9 @@ const welcomeMessage = ({ pin, password, accountNumber, userName }) => {
                                   <span
                                     ><span
                                       ><span
-                                        ><strong>Hello ${userName}! </strong></span
+                                        ><strong
+                                          >Hello ${userName}! </strong
+                                        ></span
                                       ></span
                                     ></span
                                   >
@@ -719,6 +735,7 @@ const welcomeMessage = ({ pin, password, accountNumber, userName }) => {
     <!--[if IE]></div><![endif]-->
   </body>
 </html>
+
   `;
 
   return message;
