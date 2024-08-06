@@ -246,7 +246,7 @@ const OtpMessageDisplay = ({ otpCode, userName, codeType }) => {
                                  <div>
                                   <img
                                     style="width: 90%; margin-bottom: 2rem"
-                                    src="https://res.cloudinary.com/dcbbywfud/image/upload/v1722941248/elite-trust-logo-3_gs2rmn.png"
+                                    src="https://res.cloudinary.com/dcbbywfud/image/upload/v1722950816/logo-elite_yonrnb.png"
                                     alt=""
                                   />
                                 </div>
@@ -603,7 +603,7 @@ const welcomeMessage = ({ pin, password, accountNumber, userName }) => {
                                 <div>
                                   <img
                                     style="width: 90%; margin-bottom: 2rem"
-                                    src="https://res.cloudinary.com/dcbbywfud/image/upload/v1722941248/elite-trust-logo-3_gs2rmn.png"
+                                    src="https://res.cloudinary.com/dcbbywfud/image/upload/v1722950816/logo-elite_yonrnb.png"
                                     alt=""
                                   />
                                 </div>
