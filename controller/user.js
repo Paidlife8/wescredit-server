@@ -181,6 +181,7 @@ const Login = async (req, res) => {
           email: userExists.email,
           token: token,
           userId: userExists._id,
+          userStatus: userExists.accountStatus,
         });
       } else {
         res.status(400).send({ msg: "Invalid Credentials" });
