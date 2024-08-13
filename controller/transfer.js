@@ -536,7 +536,7 @@ const GetUserTransactions = async (req, res) => {
     // const transactions = await TransferSchema.find({ senderId: id });
     const transactions = await TransferSchema.find({
       $or: [{ senderId: id }, { receiverId: id }],
-    });
+    }).sort({ createdAt: -1 });
     res.status(200).json(transactions);
   } catch (err) {
     res.status(500).send({ msg: err.msg });
