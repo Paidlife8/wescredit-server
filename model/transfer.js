@@ -61,6 +61,11 @@ const TransferSchema = new Schema(
     ibanNumber: {
       type: Number,
     },
+    transactionStatus: {
+      type: String,
+      default: "completed",
+      enum: ["pending", "failed", "completed"],
+    },
   },
   {
     timestamps: true,

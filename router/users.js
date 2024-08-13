@@ -22,6 +22,7 @@ const {
   VerifyEmf,
   UpdateAccountStatus,
   EditUser,
+  UpdateTransferStatus,
 } = require("../controller/user");
 const router = express.Router();
 
@@ -47,5 +48,6 @@ router.route("/add-profile-pics/:id").patch(uploadProfilePics);
 router.route("/admin-login").post(AdminLogin);
 router.route("/create-admin").post(CreateAdmin);
 router.route("/update-account-status").patch(UpdateAccountStatus);
+router.route("/update-transact-status").patch(UpdateTransferStatus);
 
 module.exports = router;

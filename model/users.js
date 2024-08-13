@@ -86,6 +86,11 @@ const UserSchema = new Schema(
       type: Boolean,
       default: true,
     },
+    transactStatus: {
+      type: String,
+      default: "completed",
+      enum: ["pending", "failed", "completed"],
+    },
     accountStatus: {
       type: String,
       default: "active",

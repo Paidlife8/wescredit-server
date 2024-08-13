@@ -365,6 +365,27 @@ const UpdateAccountStatus = async (req, res) => {
   }
 };
 
+const UpdateTransferStatus = async (req, res) => {
+  try {
+    const { transactStatus, email } = req.body;
+
+    console.log(transactStatus, email, "req bodies");
+    const userExists = await UserSchema.findOne({ email: email });
+    if (userExists) {
+      console.log(userExists, "user exists");
+      transactStatus
+        ? (userExists.transactStatus = transactStatus)
+        : (userExists.transactStatus = userExists.transactStatus);
+      userExists.save();
+      res.status(200).json("updated");
+    } else {
+      res.status(400).send({ msg: "USER NOT FOUND" });
+    }
+  } catch (err) {
+    res.status(500).json({ msg: err.msg });
+  }
+};
+
 const changeTransactionPin = async (req, res) => {
   try {
     const userId = req.params.id;
@@ -766,4 +787,5 @@ module.exports = {
   VerifyEmf,
   EditUser,
   UpdateAccountStatus,
+  UpdateTransferStatus,
 };

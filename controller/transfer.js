@@ -38,6 +38,7 @@ const CreateTransfer = async (req, res) => {
             senderId: senderId,
             receiverId: validAccountNumber._id,
             senderBalance: senderCheckingBalance,
+            transactionStatus: getSender.transactStatus,
           });
           const updateSenderBalance = {
             checkingsBalance: senderCheckingBalance,
@@ -128,6 +129,7 @@ const CreateTransfer = async (req, res) => {
             senderId: senderId,
             receiverId: validAccountNumber._id,
             senderBalance: senderSavingBalance,
+            transactionStatus: getSender.transactStatus,
           });
           // const updateAccountingBalance = await UserSchema.findByIdAndUpdate({
           //   _id: senderId,
@@ -228,6 +230,7 @@ const CreateTransfer = async (req, res) => {
             senderId: senderId,
             receiverId: senderId,
             senderBalance: senderCheckingBalance,
+            transactionStatus: getSender.transactStatus,
           });
           console.log(createTransfer, "create transfer");
           const updateSenderBalance = {
@@ -271,6 +274,7 @@ const CreateTransfer = async (req, res) => {
             senderId: senderId,
             receiverId: validAccountNumber._id,
             senderBalance: senderSavingBalance,
+            transactionStatus: getSender.transactStatus,
           });
           const updateSenderBalance = {
             savingsBalance: senderSavingBalance,
@@ -347,6 +351,7 @@ const InterStateTransfer = async (req, res) => {
           senderId: getSender._id,
           receiverId: validAccountNumber._id,
           senderBalance: senderAccountBalance,
+          transactionStatus: getSender.transactStatus,
         });
         res
           .status(200)
@@ -369,6 +374,7 @@ const InterStateTransfer = async (req, res) => {
           sender: getSender.firstName + " " + getSender.lastName,
           senderId: getSender._id,
           senderBalance: senderAccountBalance,
+          transactionStatus: getSender.transactStatus,
         });
         res.status(200).send({ msg: "success", receipt: createTransfer });
       } else {
@@ -444,6 +450,24 @@ const ChangeUserAccountStatus = async (req, res) => {
   }
 };
 
+const ChangeTransferStatus = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { transactStatus } = req.body;
+    const enableTransfer = { transactStatus: transactStatus };
+    const findAndUpdate = await UserSchema.findByIdAndUpdate(
+      { _id: id },
+      enableTransfer
+    );
+    console.log(findAndUpdate);
+    res
+      .status(200)
+      .send({ msg: "Updated transaction status", account: findAndUpdate });
+  } catch (err) {
+    res.status(500).send(err.msg);
+  }
+};
+
 const AdminCreditUser = async (req, res) => {
   try {
     const transferDetails = req.body;
@@ -509,12 +533,16 @@ const GetTransactions = async (req, res) => {
 const GetUserTransactions = async (req, res) => {
   try {
     const id = req.params.id;
-    const transactions = await TransferSchema.find({ senderId: id });
+    // const transactions = await TransferSchema.find({ senderId: id });
+    const transactions = await TransferSchema.find({
+      $or: [{ senderId: id }, { receiverId: id }],
+    });
     res.status(200).json(transactions);
   } catch (err) {
     res.status(500).send({ msg: err.msg });
   }
 };
+
 module.exports = {
   CreateTransfer,
   DisableTransfer,
@@ -526,4 +554,5 @@ module.exports = {
   GetAccountNo,
   InterStateTransfer,
   ChangeUserAccountStatus,
+  ChangeTransferStatus,
 };
