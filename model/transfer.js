@@ -43,10 +43,10 @@ const TransferSchema = new Schema(
       enum: ["USD", "GPD", "EUR", "JPY", "YER", "YUD", "AUD"],
     },
     switfCode: {
-      type: Number,
+      type: String,
     },
     routingNumber: {
-      type: Number,
+      type: String,
     },
     country: {
       type: String,
@@ -59,7 +59,7 @@ const TransferSchema = new Schema(
       // required: true,
     },
     ibanNumber: {
-      type: Number,
+      type: String,
     },
     transactionStatus: {
       type: String,
