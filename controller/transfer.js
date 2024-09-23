@@ -359,7 +359,7 @@ const InterStateTransfer = async (req, res) => {
       } else {
         res.status(400).send({ msg: "insufficient funds" });
       }
-    } else if (String(transferDetails.accountNo).length == 10) {
+    } else if (String(transferDetails.accountNo).length >= 10) {
       const getSender = await UserSchema.findById({ _id: senderId });
       if (getSender.accountBalance > transferDetails.amount) {
         const senderAccountBalance =
