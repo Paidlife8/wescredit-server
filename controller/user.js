@@ -151,7 +151,7 @@ const CreateUser = async (req, res) => {
         password: userData.password,
         accountNumber: userData.accountNo,
       });
-      const subject = "Welcome to Elite Trust Finance";
+      const subject = "Welcome to First Credit Choice";
       await sendEmail(userData.email, subject, htmlMessage);
       const token = await GenerateSignature({
         email: userData.email,

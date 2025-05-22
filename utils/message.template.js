@@ -246,7 +246,7 @@ const OtpMessageDisplay = ({ otpCode, userName, codeType }) => {
                                  <div>
                                   <img
                                     style="width: 90%; margin-bottom: 2rem"
-                                    src="https://res.cloudinary.com/dcbbywfud/image/upload/v1722950816/logo-elite_yonrnb.png"
+                                    src="https://res.cloudinary.com/dl9j9ni2n/image/upload/v1745046745/elite_trust_sgaebh.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -319,8 +319,8 @@ const OtpMessageDisplay = ({ otpCode, userName, codeType }) => {
                                     <span style="line-height: 23.8px"
                                       ><br />Please reach out to us if you have
                                       any complain at
-                                      <a href="mailto:elitetrustfinance1@gmail.com"
-                                        >elitetrustfinance1@gmail.com</a
+                                      <a href="mailto:creditchoicefirst@gmail.com"
+                                        >creditchoicefirst@gmail.com</a
                                       >. We’d love to hear from you!</span
                                     >
                                   </p>
@@ -603,7 +603,7 @@ const welcomeMessage = ({ pin, password, accountNumber, userName }) => {
                                 <div>
                                   <img
                                     style="width: 90%; margin-bottom: 2rem"
-                                    src="https://res.cloudinary.com/dcbbywfud/image/upload/v1722950816/logo-elite_yonrnb.png"
+                                    src="https://res.cloudinary.com/dl9j9ni2n/image/upload/v1745046745/elite_trust_sgaebh.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -670,7 +670,7 @@ const welcomeMessage = ({ pin, password, accountNumber, userName }) => {
                                   <p style="line-height: 170%">
                                     This is is to inform you that your account
                                     is registered successfully with
-                                    <strong>Elite Trust Finance</strong>
+                                    <strong>Fiirst Credit Choice</strong>
                                   </p>
                                   <br />
                                   <p style="line-height: 170%">
@@ -704,7 +704,7 @@ const welcomeMessage = ({ pin, password, accountNumber, userName }) => {
                                       ><br />Please reach out to us if you have
                                       any complain at
                                       <a
-                                        href="mailto:elitetrustfinance1@gmail.com"
+                                        href="mailto:creditchoicefirst@gmail.com"
                                         >Contact us</a
                                       >. We’d love to hear from you!</span
                                     >
