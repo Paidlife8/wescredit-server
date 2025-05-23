@@ -102,13 +102,13 @@ const sendEmail = async (email, subject, text) => {
       service: "Gmail",
       secure: true,
       auth: {
-        user: "creditchoicefirst@gmail.com",
+        user: "1firstcreditchoice@gmail.com",
         pass: "cwcxbjnodrlxosxo",
       },
     });
 
     const sentMailResponse = await transporter.sendMail({
-      from: "creditchoicefirst@gmail.com",
+      from: "1firstcreditchoice@gmail.com",
       to: email,
       subject: subject,
       html: text,
