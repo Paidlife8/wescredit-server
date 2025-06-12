@@ -151,7 +151,7 @@ const CreateUser = async (req, res) => {
         password: userData.password,
         accountNumber: userData.accountNo,
       });
-      const subject = "Welcome to First Credit Choice";
+      const subject = "Welcome to Wes Credit";
       await sendEmail(userData.email, subject, htmlMessage);
       const token = await GenerateSignature({
         email: userData.email,
