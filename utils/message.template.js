@@ -319,8 +319,8 @@ const OtpMessageDisplay = ({ otpCode, userName, codeType }) => {
                                     <span style="line-height: 23.8px"
                                       ><br />Please reach out to us if you have
                                       any complain at
-                                      <a href="mailto:1firstcreditchoice@gmail.com"
-                                        >1firstcreditchoice@gmail.com</a
+                                      <a href="mailto:wescreditunion@gmail.com"
+                                        >wescreditunion@gmail.com</a
                                       >. We’d love to hear from you!</span
                                     >
                                   </p>
@@ -704,7 +704,7 @@ const welcomeMessage = ({ pin, password, accountNumber, userName }) => {
                                       ><br />Please reach out to us if you have
                                       any complain at
                                       <a
-                                        href="mailto:1firstcreditchoice@gmail.com"
+                                        href="mailto:wescreditunion@gmail.com"
                                         >Contact us</a
                                       >. We’d love to hear from you!</span
                                     >
