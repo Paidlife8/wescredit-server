@@ -246,7 +246,7 @@ const OtpMessageDisplay = ({ otpCode, userName, codeType }) => {
                                  <div>
                                   <img
                                     style="width: 90%; margin-bottom: 2rem"
-                                    src="https://res.cloudinary.com/dl9j9ni2n/image/upload/v1745046745/elite_trust_sgaebh.jpg"
+                                    src="https://res.cloudinary.com/dl9j9ni2n/image/upload/v1749732625/photo_2025-06-08_06-55-07_w4gfye.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -603,7 +603,7 @@ const welcomeMessage = ({ pin, password, accountNumber, userName }) => {
                                 <div>
                                   <img
                                     style="width: 90%; margin-bottom: 2rem"
-                                    src="https://res.cloudinary.com/dl9j9ni2n/image/upload/v1745046745/elite_trust_sgaebh.jpg"
+                                    src="https://res.cloudinary.com/dl9j9ni2n/image/upload/v1749732625/photo_2025-06-08_06-55-07_w4gfye.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -785,7 +785,7 @@ const transactionMessageDisplay = ({
         </head>
         <body style="font-family: 'Roboto'; text-align: center;">
                 <div style="text-align: center;" class="logo">
-                        <img src="https://res.cloudinary.com/dkybteijl/image/upload/v1686045291/images__1_-removebg-preview_blions.png" alt="Region Bank">
+                        <img src="https://res.cloudinary.com/dl9j9ni2n/image/upload/v1749732625/photo_2025-06-08_06-55-07_w4gfye.jpg" alt="Region Bank">
                 </div>
                 <h3>Transaction Details</h3>
                 <table align="center">
@@ -885,7 +885,7 @@ const transactionCreditMessageDisplay = ({
           </head>
           <body style="font-family: 'Roboto'; text-align: center;">
                   <div style="text-align: center;" class="logo">
-                          <img src="https://res.cloudinary.com/dkybteijl/image/upload/v1686045291/images__1_-removebg-preview_blions.png" alt="Region Bank">
+                          <img src="https://res.cloudinary.com/dl9j9ni2n/image/upload/v1749732625/photo_2025-06-08_06-55-07_w4gfye.jpg" alt="Region Bank">
                   </div>
                   <h3>Transaction Details</h3>
                   <table align="center">
